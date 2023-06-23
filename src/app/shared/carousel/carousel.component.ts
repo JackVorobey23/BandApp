@@ -41,21 +41,18 @@ export class CarouselComponent implements OnInit {
         this.currentIndexes = [0, 1, 2];
       }
     });
-    console.log(this.images);
 
     this.getCurrentImages('right');
 
   }
   goToUrl(index: any) {
 
-    console.log(this.images);
 
     let url = this.images![index].Url;
 
     if (url !== undefined && url !== null) {
       window.open(url, "_blank");
     }
-    console.log(index);
 
   }
   getCurrentImages(direction: string) {
@@ -71,7 +68,6 @@ export class CarouselComponent implements OnInit {
     else {
       console.log('wrong direction');
     }
-    console.log(this.currentIndexes);
   }
 
   next(index: number) {

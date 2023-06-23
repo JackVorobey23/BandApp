@@ -48,7 +48,6 @@ export class HeaderComponent implements OnInit, OnDestroy {
   public async GetPrevBand() {
 
     const prevBandId = this.bandService.BandDataSubject.getValue().BandId - 1;
-    console.log(prevBandId);
 
     if (prevBandId < 0) {
       console.log("Current Band is the first!");
@@ -58,22 +57,21 @@ export class HeaderComponent implements OnInit, OnDestroy {
     const prevBand = <Band>(await this.crudService.GetBand(prevBandId.toString()));
 
     this.bandService.BandDataSubject.next(prevBand);
-    console.log(this.bandService.BandDataSubject.getValue());
 
   }
 
   public changeColorTheme(themeColors: ThemeColors, logoUrl: string) {
     (document.getElementsByClassName('nav-main')[0] as HTMLElement).style.background = `linear-gradient(150deg, ${themeColors.Darker} 39%, ${themeColors.Lighter} 89%)`;
+    
     (document.querySelector('body') as HTMLElement).style.backgroundColor = `${themeColors.Background}`;
+    
     (document.getElementsByClassName('background-image')[0] as HTMLElement).style.backgroundImage = `url(${logoUrl})`;
-    console.log(themeColors);
   }
   
 
   public async GetNextBand() {
 
     const nextBandId = this.bandService.BandDataSubject.getValue().BandId + 1;
-    console.log(nextBandId);
 
     if (nextBandId > 2) {
       console.log("Current Band is the last!");

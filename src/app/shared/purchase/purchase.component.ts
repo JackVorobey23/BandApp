@@ -11,18 +11,35 @@ import { Router } from '@angular/router';
 })
 export class PurchaseComponent implements OnInit, OnDestroy {
   constructor(private crudService: CrudService, private bandService: BandService, private router: Router) { }
+
+  public purchaseCompleted = false;
+
   public PurchaseInfo: [number, number][] = [];
   public FinalCost: number = 0;
   public BandInfo: Band = this.bandService.BandDataSubject.getValue();
 
   ngOnInit(): void {
-    if(this.bandService.PurchaseData !== undefined) {
+    if (this.bandService.PurchaseData !== undefined) {
       this.PurchaseInfo = this.bandService.PurchaseData;
     }
   }
-  
-  Buy() {
 
+  Buy() {
+    let newBand: Band = this.bandService.BandDataSubject.getValue();
+
+    newBand.Products = newBand.Products.map(p => {
+
+      let purchaseProduct = this.PurchaseInfo.find(pi => pi[0] == p.ProductId);
+
+      if (purchaseProduct !== undefined) {
+        p.Amount -= purchaseProduct[1];
+      }
+      return p;
+    })
+
+    this.crudService.updateBand(newBand);
+
+    this.purchaseCompleted = true;
   }
 
   Cancel() {
@@ -32,10 +49,10 @@ export class PurchaseComponent implements OnInit, OnDestroy {
 
   GetProducts() {
     let products = [];
-    for(let pi of this.PurchaseInfo!) {
+    for (let pi of this.PurchaseInfo!) {
 
       let tempProduct = this.BandInfo.Products.find(p => p.ProductId === pi[0]);
-      
+
       products.push({
         Amount: pi[1],
         Cost: pi[1] * tempProduct!.Cost,
@@ -47,6 +64,6 @@ export class PurchaseComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    
+
   }
 }

@@ -92,13 +92,9 @@ export class ShopComponent implements OnInit, OnDestroy {
   }
 
   getAmountToBuy(id: number) {
-    console.log(id);
-
     const amount = this.Cart?.find(c => c[0] == id);
 
     if (amount !== undefined) {
-      console.log(amount[1].toString());
-
       return amount[1].toString();
     }
 
@@ -106,7 +102,9 @@ export class ShopComponent implements OnInit, OnDestroy {
   }
 
   goToPurchase() {
-    this.router.navigateByUrl('purchase');
+    if(this.Cart.length > 0) {
+      this.router.navigateByUrl('purchase');
+    }
   }
 }
 

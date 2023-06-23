@@ -20,9 +20,7 @@ export class ContactsComponent implements OnInit, OnDestroy {
 
 
     this.subscribtion = this.bandService.BandData$.subscribe(data => {
-      console.log(data.Location);
       this.displayMap(data.Location);
-
     })
 
     this.displayMap(location);
@@ -34,7 +32,7 @@ export class ContactsComponent implements OnInit, OnDestroy {
 
   displayMap(location: [number, number]) {
     this.map?.remove();
-    
+
     this.map = L.map('band-map-container', {
       center: location,
       zoom: 16,

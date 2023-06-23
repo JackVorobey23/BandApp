@@ -9,17 +9,13 @@ export class CrudService {
 
   constructor(private db: AngularFireDatabase) { }
 
-  AddBand(band: Band) {
-
-    this.db.database.ref('bands-list/' + 5).set({
-      damn: "aaaaa"
-    })
+  updateBand(band: Band) {
+    this.db.database.ref('bands-list/' + band.BandId).update(band);
   }
 
   async GetBand(id: string) {
     
     try {
-      console.log("asd");
       const resBand = await new Promise((resolve, reject) => {
         this.db.object('bands-list/' + id).valueChanges().pipe(take(1)).subscribe(data => {
           if (data === null) {
@@ -50,7 +46,6 @@ export class CrudService {
           }
         });
       });
-      console.log(resBandList);
       
       return resBandList;
     }
