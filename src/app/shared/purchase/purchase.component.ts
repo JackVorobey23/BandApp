@@ -11,14 +11,14 @@ import { Router } from '@angular/router';
 })
 export class PurchaseComponent implements OnInit, OnDestroy {
   constructor(private crudService: CrudService, private bandService: BandService, private router: Router) { }
-  public PurchaseInfo: [[number, number]] | undefined;
+  public PurchaseInfo: [number, number][] = [];
+  public FinalCost: number = 0;
   public BandInfo: Band = this.bandService.BandDataSubject.getValue();
 
   ngOnInit(): void {
     if(this.bandService.PurchaseData !== undefined) {
       this.PurchaseInfo = this.bandService.PurchaseData;
     }
-    console.log(this.PurchaseInfo);
   }
   
   Buy() {
@@ -26,6 +26,7 @@ export class PurchaseComponent implements OnInit, OnDestroy {
   }
 
   Cancel() {
+
     this.router.navigateByUrl('shop');
   }
 
@@ -34,7 +35,6 @@ export class PurchaseComponent implements OnInit, OnDestroy {
     for(let pi of this.PurchaseInfo!) {
 
       let tempProduct = this.BandInfo.Products.find(p => p.ProductId === pi[0]);
-      console.log(tempProduct);
       
       products.push({
         Amount: pi[1],
@@ -42,11 +42,11 @@ export class PurchaseComponent implements OnInit, OnDestroy {
         ProductName: tempProduct?.Name
       })
     }
-
+    this.FinalCost = products.reduce((prev, curr) => prev + curr.Cost, 0)
     return products;
   }
 
   ngOnDestroy(): void {
-    throw new Error('Method not implemented.');
+    
   }
 }

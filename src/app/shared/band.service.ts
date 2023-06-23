@@ -21,12 +21,13 @@ export class BandService {
       Darker: "",
       Lighter: ""
     },
-    BandLogo: ""
+    BandLogo: "",
+    Location: [0,0]
   });
 
   public BandData$: Observable<Band> = this.BandDataSubject.asObservable();
 
-  public PurchaseData: [[number, number]] = [[0,0]];
+  public PurchaseData: [number, number][] = [];
 
   constructor() { }
 }

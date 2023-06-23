@@ -11,5 +11,6 @@ export interface Band {
     MusicPlatforms: MediaPlatform[],
     Products: Product[],
     ThemeColors: ThemeColors,
-    BandLogo: string
+    BandLogo: string,
+    Location: [number, number]
 }

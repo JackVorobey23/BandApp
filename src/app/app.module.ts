@@ -9,23 +9,24 @@ import { AngularFireStorageModule } from '@angular/fire/compat/storage';
 import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
 import { AngularFireDatabaseModule } from '@angular/fire/compat/database';
 import { environment } from '../environments/environment';
-import { HeaderComponent } from './shared/header/header.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { NavComponent } from './shared/nav/nav.component';
-import { GalleryComponent } from './shared/gallery/gallery.component';
+import { HeaderComponent } from './shared/header/header.component';
 import { ShopComponent } from './shared/shop/shop.component';
 import { InformationComponent } from './shared/information/information.component';
 import { PurchaseComponent } from './shared/purchase/purchase.component';
 import { CarouselComponent } from './shared/carousel/carousel.component';
+import { ContactsComponent } from './shared/contacts/contacts.component';
+import { YouTubePlayerModule } from '@angular/youtube-player';
 @NgModule({
-  declarations: [AppComponent, HeaderComponent, NavComponent, GalleryComponent, ShopComponent, InformationComponent, PurchaseComponent, CarouselComponent],
+  declarations: [AppComponent, HeaderComponent, NavComponent, ShopComponent, InformationComponent, PurchaseComponent, CarouselComponent, ContactsComponent],
   imports: [
     BrowserModule,
     RouterModule.forRoot([
       { path: 'information', component: InformationComponent },
       { path: 'shop', component: ShopComponent },
-      { path: 'gallery', component: GalleryComponent },
       { path: 'purchase', component: PurchaseComponent },
+      { path: 'contacts', component: ContactsComponent },
       { path: '', redirectTo: '/information', pathMatch: 'full' }
     ]),
     AngularFireModule.initializeApp(environment.firebaseConfig),
@@ -33,6 +34,7 @@ import { CarouselComponent } from './shared/carousel/carousel.component';
     AngularFirestoreModule,
     AngularFireStorageModule,
     AngularFireDatabaseModule,
+    YouTubePlayerModule,
     NgbModule
   ],
   providers: [],

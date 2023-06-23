@@ -4,7 +4,7 @@
     top: -2%;
     display: block;
     width: 100%;
-    height: 20vh;
+    height: 18vh;
     filter: blur(5px);
     z-index: 3;
 }
@@ -20,8 +20,9 @@
 .header-component {
     color: white;
     border: #111 2px solid;
-    height: 18vh;
+    height: 16vh;
     line-height: 130px;
+    margin-bottom: 9vh;
 }
 .band-name {
     font-size: 60px;

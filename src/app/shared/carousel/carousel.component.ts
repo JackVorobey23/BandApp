@@ -37,12 +37,12 @@ export class CarouselComponent implements OnInit {
       if (direction === 'right') {
 
         this.currentIndexes = this.currentIndexes.map(ci => this.next(ci));
-
-      } else if (direction === 'left') {
+      } 
+      else if (direction === 'left') {
 
         this.currentIndexes = this.currentIndexes.map(ci => this.previous(ci));
-
-      } else {
+      } 
+      else {
         console.log('wrong direction');
       }
       console.log(this.currentIndexes);

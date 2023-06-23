@@ -1,14 +1,20 @@
 <div class="main-container">
     <div>
-        <p>Обрані товари: </p>
-        <div *ngFor="let product of GetProducts()">
-            <p>Назва: {{product.ProductName}}</p>
-            <p>Кількість: {{product.Amount}}</p>
-            <p>Ціна: {{product.Cost}}</p>
+        <div>
+            <p>Обрані товари: </p>
+            <div class="product-container">
+                <div *ngFor="let product of GetProducts()" class="product-card">
+                    <p>Назва: {{product.ProductName}}</p>
+                    <p>Кількість: {{product.Amount}}</p>
+                    <p>Ціна: {{product.Cost}}</p>
+                </div>
+            </div>
+            <p>Фінальна ціна: {{FinalCost}}</p>
+            
         </div>
-        <p>Фінальна ціна: </p>
-        
+        <div>
+            <button (click)="Cancel()" class="action-button">Відмінити</button>
+            <button (click)="Buy()" class="action-button">Купити</button>
+        </div>
     </div>
-    <button (click)="Cancel()" class="action-button">Відмінити</button>
-    <button (click)="Buy()" class="action-button">Купити</button>
 </div>

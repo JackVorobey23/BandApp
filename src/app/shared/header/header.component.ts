@@ -30,9 +30,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
   private subscription: Subscription | undefined;
 
   async ngOnInit() {
-    console.log("a.");
     
-    console.log("123");
     const currentBand = <Band>(await this.crudService.GetBand("1"));
     this.bandService.BandDataSubject.next(currentBand);
     

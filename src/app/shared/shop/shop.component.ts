@@ -15,7 +15,7 @@ export class ShopComponent implements OnInit, OnDestroy {
 
   public selectedProduct: string = "All";
   public Products: Product[] | undefined;
-  public Cart: [[number, number]] | undefined; // [[ProductId, AmountOfProducts]]
+  public Cart: [number, number][] = []; // [[ProductId, AmountOfProducts]]
   public reload = true;
 
   public subscribtion: Subscription | undefined;
@@ -28,7 +28,8 @@ export class ShopComponent implements OnInit, OnDestroy {
 
   ngOnDestroy(): void {
     this.subscribtion?.unsubscribe();
-    this.bandService.PurchaseData = this.Cart!;
+
+    this.bandService.PurchaseData = this.Cart!.filter(prodInfo => prodInfo[1] !== 0);
   }
 
   onSelectChange(event: Event) {
@@ -36,7 +37,6 @@ export class ShopComponent implements OnInit, OnDestroy {
     if (target && target.value) {
       this.selectedProduct = target.value;
     }
-    console.log(this.selectedProduct);
 
   }
 
@@ -52,7 +52,6 @@ export class ShopComponent implements OnInit, OnDestroy {
   addProduct(productId: number) {
 
     let existProduct = this.Cart?.find(c => c[0] == productId);
-    console.log(existProduct);
 
     if (existProduct !== null && existProduct !== undefined) {
 
@@ -63,12 +62,10 @@ export class ShopComponent implements OnInit, OnDestroy {
       }
 
       this.Cart![indexToChange!][1] += 1;
-      console.log(this.Cart![indexToChange!][1]);
+    }
+    else {
 
-    } else {
-      console.log(productId, 0);
-
-      this.Cart?.push([productId, 0]);
+      this.Cart?.push([productId, 1]);
     }
 
   }
@@ -86,15 +83,15 @@ export class ShopComponent implements OnInit, OnDestroy {
       }
 
       this.Cart![indexToChange!][1] -= 1;
-      console.log(this.Cart![indexToChange!][1]);
-    } else {
-      console.log(productId, 0);
+    }
+    else {
+
       this.Cart?.push([productId, 0]);
     }
 
   }
 
-  getAmountToBy(id: number) {
+  getAmountToBuy(id: number) {
     console.log(id);
 
     const amount = this.Cart?.find(c => c[0] == id);
@@ -104,7 +101,6 @@ export class ShopComponent implements OnInit, OnDestroy {
 
       return amount[1].toString();
     }
-    console.log("0");
 
     return "0";
   }

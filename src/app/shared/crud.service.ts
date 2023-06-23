@@ -24,7 +24,8 @@ export class CrudService {
         this.db.object('bands-list/' + id).valueChanges().pipe(take(1)).subscribe(data => {
           if (data === null) {
             reject(new Error(`band with id ${id} does not exists`));
-          } else {            
+          } 
+          else {            
             resolve(<Band>data);
           }
         });
@@ -43,7 +44,8 @@ export class CrudService {
         this.db.object('bands-list').valueChanges().pipe(take(1)).subscribe(data => {
           if (data === null) {
             reject(new Error('band list does not exist'));
-          } else {
+          } 
+          else {
             resolve(data);
           }
         });
@@ -56,17 +58,4 @@ export class CrudService {
       throw error;
     }
   }
-
-  // UpdateBand(band: Band) {
-  //   this.db.list('bands-list').update();
-  //   this.bandRef?.update({
-  //     BandI: band.BandId,
-  //     lastName: band.Title,
-  //   });
-  // }
-
-  // DeleteBand(id: string) {
-  //   this.bandRef = this.db.object('bands-list/' + id);
-  //   this.bandRef.remove();
-  // }
 }

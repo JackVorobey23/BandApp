@@ -23,13 +23,13 @@
                         <button (click)="addProduct(product.ProductId)" class="product-button">+</button>
                         <button (click)="removeProduct(product.ProductId)" class="product-button">-</button>
                     </div>
-                    <p>Обрано: {{getAmountToBy(product.ProductId)}}</p>
+                    <p>Обрано: {{getAmountToBuy(product.ProductId)}}</p>
                 </div>
                 
             </div>
         </div>
     </div>
     <div class="d-flex justify-content-center">
-        <button (click)="goToPurchase()" class="action-button">Buy</button>
+        <button (click)="goToPurchase()" class="action-button">Купити</button>
     </div>
 </div>
