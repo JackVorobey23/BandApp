@@ -1,0 +1,14 @@
+<div class="main-container">
+    <div>
+        <p>Обрані товари: </p>
+        <div *ngFor="let product of GetProducts()">
+            <p>Назва: {{product.ProductName}}</p>
+            <p>Кількість: {{product.Amount}}</p>
+            <p>Ціна: {{product.Cost}}</p>
+        </div>
+        <p>Фінальна ціна: </p>
+        
+    </div>
+    <button (click)="Cancel()" class="action-button">Відмінити</button>
+    <button (click)="Buy()" class="action-button">Купити</button>
+</div>

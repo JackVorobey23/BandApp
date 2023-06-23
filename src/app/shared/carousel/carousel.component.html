@@ -1,0 +1,8 @@
+<div class="main-car d-flex justify-content-around">
+    <button (click)="getCurrentImages('left')"><</button>
+            <div *ngFor="let index of currentIndexes" (click)="goToUrl(index)" class="inner-img" [ngStyle]="{ 'background-image': 'url(' + (images![index]?.ImageUrl || ' ') + ')' }">
+                
+                <p class="caption">{{images![index]?.Caption || ' '}}</p>
+            </div>
+    <button (click)="getCurrentImages('right')">></button>
+  </div>

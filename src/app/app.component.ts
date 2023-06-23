@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { CrudService } from './shared/crud.service';
+import { BandService } from './shared/band.service';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +8,6 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'band-app';
+
+  title = 'BandApp';
 }

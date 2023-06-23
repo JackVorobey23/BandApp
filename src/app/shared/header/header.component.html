@@ -1,0 +1,18 @@
+<div class="header-component d-flex justify-content-between">
+    <img class="background-image">
+    <div class="content d-flex justify-content-between">
+        <div (click)="GetPrevBand()" class="btn-outer d-flex justify-content-center">
+            <button class="left-button">
+
+            </button>
+        </div>
+        <div class="band-name">
+            {{bandTitle || ' '}}
+        </div>
+        <div (click)="GetNextBand()" class="btn-outer d-flex justify-content-center">
+            <button class="right-button">
+                <div></div>
+            </button>
+        </div>
+    </div>
+</div>

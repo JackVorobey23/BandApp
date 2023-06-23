@@ -1,0 +1,35 @@
+<div class="main-container">
+    <p>Обрати товар: </p>
+    <select (change)="onSelectChange($event)">
+        <option value="All">Всі</option>
+        <option value="Ticket">Білети</option>
+        <option value="Souvenir">Сувеніри</option>
+    </select>
+
+    <p>Товари: </p>
+    <div>
+        <div class="shop-container">
+
+            <div *ngFor="let product of getProducts()">
+                
+                <div class="shop-element">
+                    <div class="center text-center">
+                        <p>{{product.Name}}</p>
+                        <img [src]="product.ImageUrl">
+                    </div>
+                    <p>Кількість:{{product.Amount}}</p>
+                    <p>Вартість:{{product.Cost}}</p>
+                    <div class="d-flex justify-content-around">
+                        <button (click)="addProduct(product.ProductId)" class="product-button">+</button>
+                        <button (click)="removeProduct(product.ProductId)" class="product-button">-</button>
+                    </div>
+                    <p>Обрано: {{getAmountToBy(product.ProductId)}}</p>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+    <div class="d-flex justify-content-center">
+        <button (click)="goToPurchase()" class="action-button">Buy</button>
+    </div>
+</div>

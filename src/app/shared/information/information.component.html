@@ -1,0 +1,14 @@
+<div class="">
+  <div class="main-text">
+    <p class="foundation">Дата заснування: <br>{{BandInfo!.DateOfFoundation}}</p>
+    <p class="albums">
+      Альбоми: <br></p>
+      <app-carousel [images]="currentAlbums"></app-carousel>
+
+    <p class="social-media">Гурт в соціальних мережах: </p>
+    <app-carousel [images]="currentSocialMedia"></app-carousel>
+    
+    <p class="music-platforms">Гурт на музичних платформах: </p>
+    <app-carousel [images]="currentMusicPlatforms"></app-carousel>
+  </div>
+</div>

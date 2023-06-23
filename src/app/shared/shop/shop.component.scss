@@ -1,0 +1,69 @@
+* {
+    color: rgba(255, 255, 255, 0.51);
+}
+p {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 22px;
+    padding: 5px;
+}
+img {
+    height: 100px;
+    width: auto;
+}
+.main-container {
+    align-items: center;
+    padding: 40px 20px;
+}
+.shop-element {
+    background-color: #00000030;
+    width: 300px;
+    margin: 30px;
+    border: 7px solid black;
+    padding: 10px;
+    min-height: 400px;
+}
+
+.shop-container {
+    display: flex;
+    justify-content: space-around;
+    height: auto;
+    flex-wrap: wrap;
+}
+
+.product-button {
+    color: white;
+    background-color: transparent;
+    border: none;
+    text-shadow: 0 0 4px #ffaa5b;
+    font-size: 30px;
+    padding: 0 20px;
+    transition: all .3s;
+}
+
+.product-button:hover {
+    background-color: #00000027;
+    text-shadow: 0 0 10px #ffcc9c;
+    transform: translateY(-5px) scale(1.2);
+    transition: all 0.3s;
+}
+
+select {
+    background-color: #060c11;
+    color: white;
+    padding: 12px;
+    width: 250px;
+    border: none;
+    font-size: 20px;
+    box-shadow: 0 5px 25px rgba(0, 0, 0, 0.2);
+    -webkit-appearance: button;
+    appearance: button;
+    outline: none;
+  }
+  
+  select:hover {
+    background-color: rgb(44, 44, 44);
+  }
+  
+  select option {
+    padding: 30px;
+  }
